@@ -1,7 +1,7 @@
 type Urls = string;
 const baseUrl: Urls = "https://www.themealdb.com/api/json/v1/1";
 
-export interface Meal {
+export interface TMeal {
   idMeal: string;
   strMeal: string;
   strDrinkAlternate?: any;
@@ -61,7 +61,7 @@ export async function getRandomMeals() {
   const url: string = `${baseUrl}/random.php`;
   try {
     const response = await fetch(url);
-    const data: Meal[] = await response.json();
+    const data: TMeal[] = await response.json();
     return data;
   } catch (error) {
     console.log(error);
