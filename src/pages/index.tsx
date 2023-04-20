@@ -30,8 +30,6 @@ type Props = { response?: TMeal[]; categories: TCategory[] };
 export default function Home(props: Props) {
   const [data, setData] = useState<TMeal[] | undefined>(props.response);
 
-  console.log(props);
-
   const meals = data?.map((eachMeal, i) => {
     return <Meal key={i} eachMeal={eachMeal} />;
 

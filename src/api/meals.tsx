@@ -96,3 +96,14 @@ export async function filterByCategory(category: string) {
     console.error(error);
   }
 }
+
+export async function getDetail(id: string) {
+  try {
+    const url: Urls = `${baseUrl}/lookup.php?i=${id}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.meals[0] as TMeal;
+  } catch (error) {
+    console.error(error);
+  }
+}
