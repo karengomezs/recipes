@@ -1,5 +1,12 @@
+import { useState } from "react";
 import { Navbar } from "@/components/navbar";
-import { getRandomMeals, TMeal, getCategories, TCategory } from "@/api/meals";
+import {
+  getRandomMeals,
+  TMeal,
+  getCategories,
+  TCategory,
+  filterByCategory,
+} from "@/api/meals";
 import { Meal } from "@/components/meal";
 
 export const getServerSideProps = async () => {
@@ -21,9 +28,11 @@ export const getServerSideProps = async () => {
 type Props = { response?: TMeal[]; categories: TCategory[] };
 
 export default function Home(props: Props) {
+  const [data, setData] = useState<TMeal[] | undefined>(props.response);
+
   console.log(props);
 
-  const meals = props.response?.map((eachMeal, i) => {
+  const meals = data?.map((eachMeal, i) => {
     return <Meal key={i} eachMeal={eachMeal} />;
 
     // const tags = arrayTags?.map((tag) => {
@@ -78,7 +87,18 @@ export default function Home(props: Props) {
         key={category.idCategory}
         className="px-2 py-1 bg-gray-200 rounded-xl flex items-baseline"
       >
-        {category.strCategory}
+        <button
+          onClick={async () => {
+            try {
+              const response = await filterByCategory(category.strCategory);
+              setData(response);
+            } catch (error) {
+              console.error(error);
+            }
+          }}
+        >
+          {category.strCategory}
+        </button>
       </li>
     );
   });
