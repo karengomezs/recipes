@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 } */
+
+.full-h-mobile {
+  height: calc(100vh - calc(100vh - 100%));
+}
