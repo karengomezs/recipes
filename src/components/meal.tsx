@@ -9,7 +9,7 @@ export function Meal({ eachMeal }: Props) {
     return (
       <li
         key={tag}
-        className="px-2 bg-gray-200 rounded-xl flex items-baseline "
+        className="px-2 bg-gray-200 rounded-xl flex items-baseline h-fit"
       >
         <small>{tag}</small>
       </li>
@@ -39,7 +39,7 @@ export function Meal({ eachMeal }: Props) {
               </div>
               <p className="text-gray-700">32 reviews</p>
             </div>
-            <div className="flex justify-between text-gray-700 mt-2">
+            <div className="flex justify-between text-gray-700 mt-2 flex-wrap gap-2">
               <ul className="flex gap-2">{tags}</ul>
               <time>
                 <i className="fa-regular fa-clock mr-2"></i>
