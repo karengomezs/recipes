@@ -61,8 +61,8 @@ export async function getRandomMeals() {
   const url: Urls = `${baseUrl}/random.php`;
   try {
     const response = await fetch(url);
-    const data: TMeal[] = await response.json();
-    return data;
+    const data = await response.json();
+    return data.meals[0] as TMeal;
   } catch (error) {
     console.error(error);
   }

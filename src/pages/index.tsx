@@ -13,22 +13,18 @@ export const getServerSideProps = async () => {
   //para obtener las 10 recetas random, me pide tener una cuenta paypal y pagar, pero puedo obtener 1 random en cada consulta
   //Lookup a selection of 10 random meals (only available to $2+ Paypal supporters)
   //www.themealdb.com/api/json/v1/1/randomselection.php
-  const promises = new Array(10).fill(getRandomMeals());
-  const response = await Promise.all(promises);
-
-  const meals = response.map((meal) => {
-    return meal.meals[0];
-  });
+  const response = await getRandomMeals();
+  const meals = new Array(10).fill(response);
 
   const categories = await getCategories();
 
-  return { props: { response: meals, categories } };
+  return { props: { meals, categories } };
 };
 
-type Props = { response?: TMeal[]; categories: TCategory[] };
+type Props = { meals: TMeal[]; categories: TCategory[] };
 
 export default function Home(props: Props) {
-  const [data, setData] = useState<TMeal[] | undefined>(props.response);
+  const [data, setData] = useState<TMeal[] | undefined>(props.meals);
 
   const meals = data?.map((eachMeal, i) => {
     return <Meal key={i} eachMeal={eachMeal} />;
