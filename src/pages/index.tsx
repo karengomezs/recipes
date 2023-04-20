@@ -103,7 +103,7 @@ export default function Home(props: Props) {
       <main className="flex min-h-screen flex-col py-10 px-4 max-w-6xl mx-auto">
         <div className="px-10 mb-6  sm:pr-32">
           <h1 className="text-xl sm:text-4xl text-gray-700">
-            " People who loves to eat are always the Best People "
+            &quot; People who loves to eat are always the Best People &quot;
           </h1>
           <h2 className="text-base sm:text-2xl text-end font-semibold text-orange-500">
             Julia Child
