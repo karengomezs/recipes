@@ -6,8 +6,6 @@ export function Navbar() {
   const [modal, setModal] = useState(false);
   const router = useRouter();
 
-  console.log(router);
-
   return (
     <>
       <nav className="border-b-2 ">

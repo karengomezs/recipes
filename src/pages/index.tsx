@@ -105,6 +105,19 @@ export default function Home(props: Props) {
     <>
       <Navbar />
       <main className="flex min-h-screen flex-col py-10 px-4 max-w-6xl mx-auto">
+        <div className="px-10 mb-6  sm:pr-32">
+          <h1 className="text-xl sm:text-4xl text-gray-700">
+            " People who loves to eat are always the Best People "
+          </h1>
+          <h2 className="text-base sm:text-2xl text-end font-semibold text-orange-500">
+            Julia Child
+          </h2>
+        </div>
+        <img
+          className="h-52 object-cover mb-5 rounded-xl"
+          src="/mealmain.jpg"
+          alt=""
+        />
         <h3 className="mb-5 text-red-700 text-xl font-bold">RECETAS</h3>
         <ul className="flex flex-wrap gap-3 mb-5">{categories}</ul>
         <ul className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">{meals}</ul>
