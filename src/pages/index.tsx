@@ -104,10 +104,10 @@ export default function Home(props: Props) {
   return (
     <>
       <Navbar />
-      <main className="flex min-h-screen flex-col py-10 px-20 max-w-6xl mx-auto">
+      <main className="flex min-h-screen flex-col py-10 px-4 max-w-6xl mx-auto">
         <h3 className="mb-5 text-red-700 text-xl font-bold">RECETAS</h3>
         <ul className="flex flex-wrap gap-3 mb-5">{categories}</ul>
-        <ul className="grid grid-cols-3 gap-5">{meals}</ul>
+        <ul className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">{meals}</ul>
       </main>
     </>
   );
