@@ -83,7 +83,7 @@ export default function Home(props: Props) {
     return (
       <li
         key={category.idCategory}
-        className="px-2 py-1 bg-gray-200 rounded-xl flex items-baseline"
+        className=" bg-gray-200 rounded-xl flex px-2 py-1 "
       >
         <button
           onClick={async () => {
