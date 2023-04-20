@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/navbar";
-import { getRandomMeals, TMeal } from "@/api/meals";
+import { getRandomMeals, TMeal, getCategories, TCategory } from "@/api/meals";
 import { Meal } from "@/components/meal";
 
 export const getServerSideProps = async () => {
@@ -13,10 +13,12 @@ export const getServerSideProps = async () => {
     return meal.meals[0];
   });
 
-  return { props: { response: meals } };
+  const categories = await getCategories();
+
+  return { props: { response: meals, categories } };
 };
 
-type Props = { response?: TMeal[] };
+type Props = { response?: TMeal[]; categories: TCategory[] };
 
 export default function Home(props: Props) {
   console.log(props);
@@ -70,10 +72,23 @@ export default function Home(props: Props) {
     // );
   });
 
+  const categories = props.categories?.map((category) => {
+    return (
+      <li
+        key={category.idCategory}
+        className="px-2 py-1 bg-gray-200 rounded-xl flex items-baseline"
+      >
+        {category.strCategory}
+      </li>
+    );
+  });
+
   return (
     <>
       <Navbar />
-      <main className="flex min-h-screen flex-col py-10 px-20 bg-stone-100">
+      <main className="flex min-h-screen flex-col py-10 px-20 max-w-6xl mx-auto">
+        <h3 className="mb-5 text-red-700 text-xl font-bold">RECETAS</h3>
+        <ul className="flex flex-wrap gap-3 mb-5">{categories}</ul>
         <ul className="grid grid-cols-3 gap-5">{meals}</ul>
       </main>
     </>

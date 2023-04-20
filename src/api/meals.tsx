@@ -58,12 +58,30 @@ export interface TMeal {
 }
 
 export async function getRandomMeals() {
-  const url: string = `${baseUrl}/random.php`;
+  const url: Urls = `${baseUrl}/random.php`;
   try {
     const response = await fetch(url);
     const data: TMeal[] = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
+  }
+}
+
+export interface TCategory {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+}
+
+export async function getCategories() {
+  const url: Urls = `${baseUrl}/categories.php`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.categories as TCategory[];
+  } catch (error) {
+    console.error(error);
   }
 }
