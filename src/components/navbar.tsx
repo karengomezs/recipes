@@ -1,8 +1,12 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export function Navbar() {
   const [modal, setModal] = useState(false);
+  const router = useRouter();
+
+  console.log(router);
 
   return (
     <>
@@ -12,10 +16,17 @@ export function Navbar() {
             <Link href="/">KUKS FRESH</Link>
           </h2>
           <ul className="text-stone-600 hidden sm:flex flex-1 justify-center gap-5 border-r-2">
-            <li>
+            <li
+              className={`${
+                router.pathname === "/" ? "border-b-4 border-orange-500" : ""
+              }`}
+            >
               <Link href="/">Home</Link>
             </li>
-            <li>Nosotros</li>
+            <Link href="https://karengomez.netlify.app/" target="_blank">
+              <li>Nosotros</li>
+            </Link>
+
             <li>Videos</li>
           </ul>
           <img
